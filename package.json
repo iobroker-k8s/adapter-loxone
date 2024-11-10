@@ -1,0 +1,12 @@
+{
+  "name": "@iobroker-k8s/loxone",
+  "version": "1.0.0",
+  "scripts": {
+  },
+  "author": "iobroker-k8s",
+  "license": "MIT",
+  "dependencies": {
+    "iobroker.loxone": "3.0.1",
+    "iobroker.js-controller": "6.0.11"
+  }
+}
