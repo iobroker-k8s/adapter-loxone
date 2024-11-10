@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  adapter-loxone:
+  - apiVersion: v2
+    appVersion: 3.0.1
+    created: "2024-11-10T20:52:30.056194479Z"
+    description: Adapter loxone for iobroker-k8s
+    digest: d04f4d567e5bcfc320844e78d2e20f0bf6375e02279d75fa1e6e011fe4bcb5e6
+    name: adapter-loxone
+    type: application
+    urls:
+    - https://github.com/iobroker-k8s/adapter-loxone/releases/download/adapter-loxone-0.1.0/adapter-loxone-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-11-10T20:52:30.056200049Z"
