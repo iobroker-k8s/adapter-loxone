@@ -1,11 +1,5 @@
-FROM node:22-alpine
+FROM iobrokerk8s/base-adapter:latest
 
-COPY package.json /app/package.json
+RUN npm install iobroker.loxone && npm cache clean --force
 
-WORKDIR /app
-
-RUN npm install && rm -rf iob*
-
-WORKDIR /app/node_modules
-
-ENTRYPOINT [ "/usr/local/bin/node", "iobroker.loxone" ]
+ENV IOB_K8S_ADAPTER=loxone
