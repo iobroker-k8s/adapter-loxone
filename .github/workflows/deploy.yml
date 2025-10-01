@@ -26,6 +26,8 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
         tags: |
           iobrokerk8s/adapter-loxone:latest
           iobrokerk8s/adapter-loxone:3.0.1
