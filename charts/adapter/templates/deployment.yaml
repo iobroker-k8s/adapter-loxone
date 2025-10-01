@@ -47,13 +47,25 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
-          volumeMounts:
-            {{- toYaml . | nindent 12 }}
+          {{- /* Merge user volumeMounts with optional adapter config mount */}}
+          {{- $volumemounts := .Values.volumeMounts | default (list) }}
+          {{- if .Values.adapter.configMapName }}
+          {{- $cfg := dict "name" "iobroker-config" "mountPath" "/app/iobroker-data/iobroker.json" "subPath" "iobroker.json" }}
+          {{- $volumemounts = append $volumemounts $cfg }}
           {{- end }}
-      {{- with .Values.volumes }}
+          {{- if $volumemounts }}
+          volumeMounts:
+            {{- toYaml $volumemounts | nindent 12 }}
+          {{- end }}
+      {{- /* Merge user volumes with optional adapter config volume */}}
+      {{- $volumes := .Values.volumes | default (list) }}
+      {{- if .Values.adapter.configMapName }}
+      {{- $cfgVol := dict "name" "iobroker-config" "configMap" (dict "name" .Values.adapter.configMapName "items" (list (dict "key" "iobroker.json" "path" "iobroker.json"))) }}
+      {{- $volumes = append $volumes $cfgVol }}
+      {{- end }}
+      {{- if $volumes }}
       volumes:
-        {{- toYaml . | nindent 8 }}
+        {{- toYaml $volumes | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

@@ -19,6 +19,8 @@ adapter:
   config: {}
   # Host name for the adapter
   hostname: "k8s-cluster"
+  # Optional: name of a ConfigMap containing an `iobroker.json` item to mount
+  configMapName: ""
 
 #This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:

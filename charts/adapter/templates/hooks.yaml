@@ -31,6 +31,21 @@ spec:
             value: {{ .Values.adapter.instance | quote }}
           - name: IOB_K8S_HOSTNAME
             value: {{ .Values.adapter.hostname | quote }}
+        {{- if .Values.adapter.configMapName }}
+        volumeMounts:
+          - name: iobroker-config
+            mountPath: /app/iobroker-data/iobroker.json
+            subPath: iobroker.json
+        {{- end }}
+      {{- if .Values.adapter.configMapName }}
+      volumes:
+        - name: iobroker-config
+          configMap:
+            name: {{ .Values.adapter.configMapName | quote }}
+            items:
+              - key: iobroker.json
+                path: iobroker.json
+      {{- end }}
 ---
 apiVersion: batch/v1
 kind: Job
@@ -42,7 +57,7 @@ metadata:
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
     helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
   annotations:
-    "helm.sh/hook": pre-install
+    "helm.sh/hook": post-delete
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
@@ -65,3 +80,18 @@ spec:
             value: {{ .Values.adapter.instance | quote }}
           - name: IOB_K8S_HOSTNAME
             value: {{ .Values.adapter.hostname | quote }}
+        {{- if .Values.adapter.configMapName }}
+        volumeMounts:
+          - name: iobroker-config
+            mountPath: /app/iobroker-data/iobroker.json
+            subPath: iobroker.json
+        {{- end }}
+      {{- if .Values.adapter.configMapName }}
+      volumes:
+        - name: iobroker-config
+          configMap:
+            name: {{ .Values.adapter.configMapName | quote }}
+            items:
+              - key: iobroker.json
+                path: iobroker.json
+      {{- end }}
