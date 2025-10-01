@@ -39,6 +39,8 @@ spec:
           env:
             - name: IOB_K8S_INSTANCE
               value: {{ .Values.adapter.instance | quote }}
+            - name: IOB_K8S_HOSTNAME
+              value: {{ .Values.adapter.hostname | quote }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:

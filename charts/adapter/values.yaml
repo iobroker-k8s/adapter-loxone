@@ -17,6 +17,8 @@ adapter:
   instance: 1
   # Adapter configuration
   config: {}
+  # Host name for the adapter
+  hostname: "k8s-cluster"
 
 #This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
 serviceAccount:
