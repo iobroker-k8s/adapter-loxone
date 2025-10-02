@@ -5,7 +5,9 @@ metadata:
   labels:
     {{- include "helm.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  {{- $cfg := .Values.config | default (dict) }}
+  {{- $common := $cfg.common | default (dict) }}
+  replicas: {{ if $common.enabled }}1{{ else }}0{{ end }}
   selector:
     matchLabels:
       {{- include "helm.selectorLabels" . | nindent 6 }}
