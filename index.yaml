@@ -3,6 +3,16 @@ entries:
   adapter-loxone:
   - apiVersion: v2
     appVersion: 3.0.1
+    created: "2025-10-07T05:44:51.377417339Z"
+    description: Adapter loxone for iobroker-k8s
+    digest: 8a86791f7e95537aecb5818278968b06ce4cbd1ef7829436a1ed534280229317
+    name: adapter-loxone
+    type: application
+    urls:
+    - https://github.com/iobroker-k8s/adapter-loxone/releases/download/adapter-loxone-0.1.8/adapter-loxone-0.1.8.tgz
+    version: 0.1.8
+  - apiVersion: v2
+    appVersion: 3.0.1
     created: "2025-10-02T14:58:28.926623139Z"
     description: Adapter loxone for iobroker-k8s
     digest: 38d1be4e0eecca99d16688d2b1313798cca36ee3efd966ff1bba8c8f0f6a823d
@@ -81,4 +91,4 @@ entries:
     urls:
     - https://github.com/iobroker-k8s/adapter-loxone/releases/download/adapter-loxone-0.1.0/adapter-loxone-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-02T14:58:28.926665618Z"
+generated: "2025-10-07T05:44:51.3774659Z"
